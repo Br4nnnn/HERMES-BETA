@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-03-2025 a las 01:16:44
+-- Tiempo de generación: 04-04-2025 a las 07:01:16
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `sedes` (
   `id_sede` int(11) NOT NULL,
-  `nombre_sede` varchar(100) DEFAULT NULL,
-  `direccion` varchar(255) DEFAULT NULL,
-  `descripcion` text DEFAULT NULL,
+  `nombre_sede` varchar(50) DEFAULT NULL,
+  `direccion` varchar(50) NOT NULL,
+  `descripcion` text NOT NULL,
   `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
-  `estado` enum('activa','inactiva','','') NOT NULL DEFAULT 'activa'
+  `estado` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -41,12 +41,16 @@ CREATE TABLE `sedes` (
 --
 
 INSERT INTO `sedes` (`id_sede`, `nombre_sede`, `direccion`, `descripcion`, `fecha_creacion`, `estado`) VALUES
-(1, 'Sede Principal', 'Av. Central 123, Ciudad A', 'Sede principal de la empresa, ubicada en la zona central de la ciudad', '2020-01-01 05:00:00', 'activa'),
-(2, 'Sede Norte', 'Calle 456, Barrio Norte, Ciudad B', 'Sucursal ubicada en el norte de la ciudad, especializada en atención al cliente', '2019-05-10 05:00:00', 'activa'),
-(3, 'Sede Sur', 'Calle 789, Barrio Sur, Ciudad C', 'Sucursal situada en la zona sur, con servicios de ventas y soporte técnico', '2021-03-15 05:00:00', 'inactiva'),
-(4, 'Sede Este', 'Av. Este 101, Ciudad D', 'Oficina secundaria con enfoque en la logística y distribución', '2022-07-20 05:00:00', 'activa'),
-(5, 'Sede Oeste', 'Calle Oeste 505, Ciudad E', 'Sucursal ubicada en la zona oeste de la ciudad, con enfoque en marketing y publicidad', '2018-11-25 05:00:00', 'inactiva'),
-(6, 'Sede Internacional', 'Calle Internacional 1000, Bogotá, Colombia', 'Sede internacional encargada de operaciones y alianzas estratégicas en el extranjero', '2023-02-01 05:00:00', 'activa');
+(1, 'Sede Central', 'Av. Principal 123', 'Oficina principal de la empresa', '2025-03-29 00:21:01', 'Activa'),
+(2, 'Sucursal Norte', 'Calle 45 #67-89', 'Sucursal en la zona norte', '2025-03-29 00:21:01', 'Inactiva'),
+(3, 'Sucursal Sur', 'Carrera 10 #15-20', 'Sucursal en la zona sur de la ciudad', '2025-03-29 00:21:01', 'Activa'),
+(4, 'Sucursal Este', 'Diagonal 30 #50-75', 'Sucursal ubicada en el sector oriental', '2025-03-29 00:21:01', 'Activa'),
+(5, 'Sucursal Oeste', 'Transversal 15 #22-30', 'Sucursal que atiende el sector occidental', '2025-03-29 00:21:01', 'Inactiva'),
+(6, 'Centro de Distribución', 'Km 5 vía industrial', 'Centro logístico de distribución', '2025-03-29 00:21:01', 'Activa'),
+(7, 'Oficina Administrativa', 'Edificio Torre 5, Piso 3', 'Oficinas para gerencia y administración', '2025-03-29 00:21:01', 'Inactiva'),
+(8, 'Punto de Atención 1', 'Calle 8 #12-34', 'Pequeño punto de atención al cliente', '2025-03-29 00:21:01', 'Activa'),
+(9, 'Punto de Atención 2', 'Carrera 20 #55-10', 'Otro punto de atención en la ciudad', '2025-03-29 00:21:01', 'Inactiva'),
+(10, 'Almacén Principal', 'Zona Industrial Bodega 12', 'Bodega de almacenamiento de productos', '2025-03-29 00:21:01', 'Activa');
 
 -- --------------------------------------------------------
 
@@ -55,7 +59,7 @@ INSERT INTO `sedes` (`id_sede`, `nombre_sede`, `direccion`, `descripcion`, `fech
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(11) DEFAULT NULL,
+  `id_usuario` int(11) NOT NULL,
   `cedula` varchar(45) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
@@ -64,6 +68,14 @@ CREATE TABLE `usuarios` (
   `rol` varchar(45) NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `cedula`, `nombre`, `apellido`, `usuario`, `clave`, `rol`, `estado`) VALUES
+(1, '1116281626', 'Jhoan', 'Sinisterra', 'Davidjdsv', 'david123', 'Administrador', 1),
+(2, '123', 'pepe', 'potasio', 'pepe', '321', '1', 1);
 
 --
 -- Índices para tablas volcadas
@@ -80,7 +92,7 @@ ALTER TABLE `sedes`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD UNIQUE KEY `cedula` (`cedula`);
+  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -90,7 +102,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `sedes`
 --
 ALTER TABLE `sedes`
-  MODIFY `id_sede` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_sede` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
