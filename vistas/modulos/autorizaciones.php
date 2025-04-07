@@ -19,26 +19,25 @@
     <!-- Main content -->
     <section class="content">
     <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Autorizaciones</h3>
-            </div>
             <!-- /.card-header -->
             <div class="card-body">
                 <table id="tblAutorizaciones" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Usuarios</th>
-                            <th>Fecha Solicitud</th>
-                            <th>Fecha Reserva</th>
-                            <th>Fecha Entrega</th>
-                            <th>Autorizaciones</th>
-                            <th>Acciones</th>
+                            <th>#Id usuario</th>
+                            <th>Cedula</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Usuario</th>
+                            <th>Clave</th>
+                            <th>Rol</th>
+                            <th>Estado</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         
-                            
+                            echo "";
                         
                         ?>
                     </tbody>
