@@ -52,7 +52,7 @@
                                 echo '<button class="btn btn-danger btn-xs btnActivarSede" idSede="' . $value["id_sede"] . '" estadoSede="Activa">Inactivo</button>';
                             }
                             echo '<td>
-                                        <button class="btn btn-default btn-xs btnEditarSede" idSede="'. $value["id_sede"]. '" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-default btn-xs btnEditarSede" idSede="' . $value["id_sede"] . '" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>';
                         }
@@ -97,12 +97,12 @@
                     <div class="modal-footer justify-content-start">
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
-                    
+
                     <?php
 
-                        $item = null;
-                        $valor = null;
-                        $sedes = ControladorSedes::ctrCrearSedes($item, $valor);
+                    $item = null;
+                    $valor = null;
+                    $sedes = ControladorSedes::ctrCrearSedes($item, $valor);
 
                     ?>
 
